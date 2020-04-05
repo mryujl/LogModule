@@ -1,0 +1,45 @@
+*** Settings ***
+Library           Screenshot
+Library           SeleniumLibrary
+
+*** Test Cases ***
+test01
+    ${a}    Set variable    2
+    log    ${a}
+
+test02
+    ${abc}    Create List    a    2    b
+    log    ${abc}
+
+test03
+    ${a}    Evaluate    int(2)
+    #${t}    Evaluate    type(${a})
+    log    ${a}
+    #log    ${t}
+
+test04
+    ${d}    Evaluate    random.randint(1000,9999)    random
+    log    ${d}
+
+test05
+    ${a}    Set variable    int(59)
+    run keyword if    ${a}>=90    log    优秀
+    ...    ELSE IF    ${a}>=70    log    良好
+    ...    ELSE IF    ${a}>=60    log    及格
+    ...    ELSE    LOG    不及格
+
+test06
+    #:FOR    ${index}    IN RANGE    10
+    #:FOR    ${index}    IN RANGE    1    10
+    FOR    ${index}    IN RANGE    1    11    2
+        LOG    ${index}
+
+test07
+    Import Library    D:/Git/robotframework/test.py
+    ${a}    Evaluate    int(6)
+    ${b}    Evaluate    int(7)
+    ${add}    add    ${a}    ${b}
+    log    ${add}
+
+test08
+    take Screenshot
